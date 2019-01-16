@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<head>
+
+<title>Sign up</title>
+
+<script language="javascript">
+function formValidation()
+{
+var uid=document.forms["registration"]["userid"].value;
+var pass=document.forms["registration"]["passid"].value;
+var fname=document.forms["registration"]["firstname"].value;
+var lname=document.forms["registration"]["lastname"].value;
+var d=document.forms["registration"]["day"].value;
+var m=document.forms["registration"]["month"].value;
+var y=document.forms["registration"]["year"].value;
+var occ=document.forms["registration"]["occupation"].value;
+var adr=document.forms["registration"]["address"].value;
+var uzip=document.forms["registration"]["zip"].value;
+var nn=document.forms["registration"]["nationality"].value;
+var pn=document.forms["registration"]["phoneno"].value;
+if(uid_validation(uid,6,9))
+ {
+ if(passid_validation(pass,7,9))
+  {
+    if(allLetters(fname))
+     {
+       if(allLetters(lname))
+        {
+	if(valid_dm(d,2))
+               {
+                if(valid_dm(m,2))
+                  {
+                   if(valid_year(y,4))
+	 {
+ if(valid_occ(occ))
+                       {
+if(alphanumeric(adr))
+                          {
+                         if(allnumbers(uzip))
+{
+if(allLetters(nn))
+{
+if(valid_phone(pn))
+{
+alert("registered");
+window.location.href="insert.php";
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}}
+           }
+}
+function uid_validation(uid,mx,my)
+{
+var uid_len=uid.length;
+if (uid_len == 0 || uid_len >= my || uid_len < mx)
+{
+alert("User Id should not be empty / length be between "+mx+" to "+my);
+userid.focus();
+return false;
+}
+return true;
+}
+function passid_validation(pass,mx,my)
+{
+var passid_len = pass.length;
+if (passid_len == 0 ||passid_len >= my || passid_len < mx)
+{
+alert("Password should not be empty / length be between "+mx+" to "+my);
+passid.focus();
+return false;
+}
+return true;
+}
+
+function allLetters(str)
+{ 
+var letters = /^[A-Za-z]+$/;
+if(str.match(letters))
+{
+return true;
+}
+else
+{
+alert("The field must have alphabet characters only");
+str.focus();
+return false;
+}
+}
+function valid_dm(damo,len)
+{
+var dmlen=damo.length;
+if((dmlen<len) || (dmlen>len))
+{
+alert("You have entered an invalid date");
+day.focus();
+return false;
+}
+return true;
+}
+function valid_year(yr,len)
+{
+var ylen=yr.length;
+if((ylen>len)||(ylen<len))
+{
+alert("You have entered an invalid year");
+year.focus();
+return false;
+}
+return true;
+}
+function valid_occ(occupations)
+{
+if(occupations == "Default")
+{
+alert("Select your occupation from the list");
+occupation.focus();
+return false;
+}
+else
+{
+return true;
+}
+}
+function alphanumeric(addresses)
+{ 
+var letters = /^[0-9a-zA-Z]+$/;
+if(addresses.match(letters))
+{
+return true;
+}
+else
+{
+alert('User address must have alphanumeric characters only');
+address.focus();
+return false;
+}
+}
+function allnumbers(uzip)
+{ 
+var numbers = /^[0-9]+$/;
+if(uzip.match(numbers))
+{
+return true;
+}
+else
+{
+alert('It must have numeric characters only');
+uzip.focus();
+return false;
+}
+}
+function valid_em(uemail)
+{
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(uemail.match(mailformat))
+{
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+return false;
+}
+}
+function valid_phone(pn)
+{
+var numbers = /^[0-9]+$/;
+if(pn.match(numbers))
+{
+return true;
+}
+else
+{
+alert("It must have numeric characters only");
+phoneno.focus();
+return false;
+}
+}
+</script>
+
+</head>
+
+<body bgcolor="FF66FF" onLoad="document.registration.userid.focus()">
+
+<h1><p align="center">SIGN UP</p></h1>
+
+<p align="center"><font face="Forte" font size="5"></p>Use tab keys to move from one input field to the next.</p>
+
+<form name="registration" action="insert.php" method="POST"  onSubmit="return formValidation()"  >
+
+
+<table id="table2"; cellspacing="10px" cellpadding="10%"; align="left"<tr >
+<td><font face="Forte" font size="5"><pre> Sno                 name                    age                     gender              BerthPerference    </pre></td>
+ </tr>
+<tr>
+<td><pre><input type="text" name="snno" size="12">     
+<input type="text" name="name" size="12">      
+<input type="text" name="age"  size="12">    
+<select name="gender">
+
+<option selected="" value="Default">(Please select an gender)</option>
+<option value="ma">Male</option>
+<option value="fe">female
+</option>
+</select>   <select name="berthpe"r>
+<option selected="" value="Default">lowerberth</option><option value="up">upper berth</option><option value="lb">middle berth</option></select>
+  </pre></td>
+</tr>
+<tr>
+<td><pre><input type="text" name="snno" size="12">     <input type="text" name="name" size="12">      <input type="text" name="age"  size="12">    <select name="gender">
+<option selected="" value="Default">(Please select an gender)</option><option value="ma">Male</option>
+<option value="fe">female
+</option></select>   <select name="berthpe"r>
+<option selected="" value="Default">lowerberth</option><option value="up">upper berth</option><option value="lb">middle berth</option></select>
+  
+</tr>
+<tr>
+<td><pre><input type="text" name="snno" size="12">     <input type="text" name="name" size="12">      <input type="text" name="age"  size="12">    <select name="gender">
+<option selected="" value="Default">(Please select an gender)</option><option value="ma">Male</option>
+<option value="fe">female
+</option></select>   <select name="berthpe"r>
+<option selected="" value="Default">lowerberth</option><option value="up">upper berth</option><option value="lb">middle berth</option></select>
+    </pre></td>
+</tr>
+<tr>
+<td><pre><input type="text" name="snno" size="12">     <input type="text" name="name" size="12">      <input type="text" name="age"  size="12">    <select name="gender">
+<option selected="" value="Default">(Please select an gender)</option><option value="ma">Male</option>
+<option value="fe">female
+</option></select>   <select name="berthpe"r>
+<option selected="" value="Default">lowerberth</option><option value="up">upper berth</option><option value="lb">middle berth</option></select>
+    </pre></td>
+</tr>
+<tr>
+<td><pre><input type="text" name="snno" size="12">     <input type="text" name="name" size="12">      <input type="text" name="age"  size="12">    <select name="gender">
+<option selected="" value="Default">(Please select an gender)</option><option value="ma">Male</option>
+<option value="fe">female
+</option></select>   <select name="berthpe"r>
+<option selected="" value="Default">lowerberth</option><option value="up">upper berth</option><option value="lb">middle berth</option></select>
+    </pre></td>
+</tr>
+
+</form>
+
+
+
+</body>
+</html>

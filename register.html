@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<head>
+
+<title>Sign up</title>
+
+<script language="javascript">
+function formValidation()
+{
+var uid=document.forms["registration"]["userid"].value;
+var pass=document.forms["registration"]["passid"].value;
+var cpass=document.forms["registration"]["cpassid"].value;
+var fname=document.forms["registration"]["firstname"].value;
+var lname=document.forms["registration"]["lastname"].value;
+var d=document.forms["registration"]["day"].value;
+var m=document.forms["registration"]["month"].value;
+var y=document.forms["registration"]["year"].value;
+var adr=document.forms["registration"]["address"].value;
+var uzip=document.forms["registration"]["zip"].value;
+var nn=document.forms["registration"]["nationality"].value;
+var uemail=document.forms["registration"]["email"].value;
+var pn=document.forms["registration"]["phoneno"].value;
+if(uid_validation(uid,6,9))
+ {
+ if(passid_validation(pass,7,9))
+{
+    if(allLetters(fname))
+     {
+       if(allLetters(lname))
+        {
+	if(valid_dm(d,2))
+               {
+                if(valid_dm(m,2))
+                  {
+                   if(valid_year(y,4))
+	 {
+if(alphanumeric(adr))
+                          {
+                         if(allnumbers(uzip))
+{
+if(allLetters(nn))
+{
+
+if(valid_em(uemail))
+{
+if(valid_phone(pn))
+{
+alert("registered");
+window.location.href="insert.php";
+}
+}
+}
+}
+}
+}
+}
+}
+}}}
+         
+
+function uid_validation(uid,mx,my)
+{
+var uid_len=uid.length;
+if (uid_len == 0 || uid_len >= my || uid_len < mx)
+{
+alert("User Id should not be empty / length be between ","");
+userid.focus();
+return false;
+}
+return true;
+}
+function passid_validation(pass,mx,my)
+{
+var passid_len = pass.length;
+if (passid_len == 0 ||passid_len >= my || passid_len < mx)
+{
+alert("Password should not be empty / length be between "+mx+" to "+my);
+passid.focus();
+return false;
+}
+return true;
+}
+function valid_ps(cpass,pass)
+{
+if(cpass.match(pass)
+return true;
+else
+{
+alert("Doesnt match with the given password");
+cpass.focus();
+}}
+
+function allLetters(str)
+{ 
+var letters = /^[A-Za-z]+$/;
+if(str.match(letters))
+{
+return true;
+}
+else
+{
+alert("The field must have alphabet characters only");
+str.focus();
+return false;
+}
+}
+function valid_dm(damo,len)
+{
+var dmlen=damo.length;
+if((dmlen<len) || (dmlen>len))
+{
+alert("You have entered an invalid date");
+day.focus();
+return false;
+}
+return true;
+}
+function valid_year(yr,len)
+{
+var ylen=yr.length;
+if((ylen>len)||(ylen<len))
+{
+alert("You have entered an invalid year");
+year.focus();
+return false;
+}
+return true;
+}
+
+function alphanumeric(addresses)
+{ 
+var letters = /^[0-9a-zA-Z]+$/;
+if(addresses.match(letters))
+{
+return true;
+}
+else
+{
+alert('User address must have alphanumeric characters only');
+address.focus();
+return false;
+}
+}
+function allnumbers(uzip)
+{ 
+var numbers = /^[0-9]+$/;
+if(uzip.match(numbers))
+{
+return true;
+}
+else
+{
+alert('It must have numeric characters only');
+uzip.focus();
+return false;
+}
+}
+function valid_em(uemail)
+{
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(uemail.match(mailformat))
+{
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+return false;
+}
+}
+function valid_phone(pn)
+{
+var numbers = /^[0-9]+$/;
+if(pn.match(numbers))
+{
+return true;
+}
+else
+{
+alert("It must have numeric characters only");
+phoneno.focus();
+return false;
+}
+}
+</script>
+
+</head>
+
+<body bgcolor="FF66FF" onLoad="document.registration.userid.focus()">
+
+<h1><p align="center">SIGN UP</p></h1>
+
+<p align="center"><font face="Forte" font size="5"></p>Use tab keys to move from one input field to the next.</p>
+
+<form name="registration" action="hostel.php" method="POST"  
+onSubmit=return formValidation( ) >
+
+
+<table id="table2"; cellspacing="5px" cellpadding="5%"; align="center"
+
+<tr >
+<td align="center"><font face="Forte" font size="5">Username:</td>
+
+<td><input type="text" name="userid" size="12"></td>
+</tr>
+<tr>
+<tr>
+<td align="center"><font face="Forte" font size="5">Password:</td>
+
+<td><input type="password" name="passid" size="12"></td>
+</tr>
+<tr>
+<td align="center"><font face="Forte" font size="5">Confirm Password:</td>
+<td><input type="password" name="cpassid" size="12"></td>
+</tr>
+<tr>
+<td align="center"><font face="Forte" font size="5">First name:</td>
+<td><input type="text" name="firstname" size="50"></td>
+</tr>
+<tr>
+
+<td align="center"><font face="Forte" font size="5">Last name:</td>
+<td><input type="text" name="lastname" size="50"></td>
+
+</tr>
+<tr>
+<td align="center"><font face="Forte" font size="5">Gender:</td>
+<td><input type="radio" name="gender" value="Male" Checked><span>Male</span>
+
+<input type="radio" name="gender" value="Female"><span>Female</span></td>
+
+</tr>
+<tr>
+<pre><td align="center"><font face="Forte" font size="5">DateofBirth</td>    
+
+</tr>
+<tr>
+<td align="center"><font face="Forte" font size="5">Address</td>
+<td><textarea
+ rows="5" cols="30" name="address"></textarea></td>
+</tr>
+<tr>
+<td align="center"><font face="Forte" font size="5">ZIP Code:</td>
+<td><input type="text" name="zip"></td>
+</tr>
+<tr>
+<td align="center">
+
+<font face="Forte" font size="5">Nationality</td>
+<td><input type="text" name="nationality" size="30"></td>
+</tr>
+<tr><td align="center"><font face="Forte" font size="5">Email-ID</td><td><input type="text" name="email" size="20"></td></tr>
+<tr>
+<td align="center"><font face="Forte" font size="5">
+
+Phone no</td>
+<td><input type="text" name="phoneno" size="10"></td>
+</tr>
+<tr>
+<td align="center"><font face="Forte" font size="5"><input type="submit" name="submit" value="Submit"/></td>
+
+
+</tr>
+</form>
+
+
+
+</body>
+</html>
